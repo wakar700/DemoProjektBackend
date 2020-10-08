@@ -1,0 +1,34 @@
+type Query {
+    allSoftwares: [Software]!
+    allClients: [Client]
+    softwareById(id: ID): Software
+    clientById(id: ID): Client
+
+}
+
+type Mutation {
+    createClient (firstname: String, lastname: String, email: String, phone: String, age: String, software: String): Client
+    deleteSoftware(id: ID!): Int
+    deleteClient(id: ID!): Int
+    deleteSoftwareFromClient(idClient: ID, idSoftware: ID): Int
+}
+
+type Software {
+    id: ID
+    price: String
+    name: String
+    system: String
+    disc: String
+    client: Client
+}
+
+type Client {
+    id: ID!
+    firstname: String
+    lastname: String
+    email: String
+    phone: String
+    age: Int
+    softwareSet: [Software]
+}
+
